@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect width="200" height="60" rx="8" fill="#03A9F4"/>
+  <text x="100" y="38" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle">Clean Pro</text>
+  <circle cx="28" cy="30" r="14" fill="#4CAF50"/>
+  <path d="M22 30 L26 34 L34 24" stroke="#fff" stroke-width="3" fill="none"/>
+</svg>

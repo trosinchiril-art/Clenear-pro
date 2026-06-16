@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Recenzii clienți Clean Pro Cahul. Rating 5 stele, testimoniale video și experiențe reale.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Recenzii clienți | Clean Pro</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-clean fixed-top" aria-label="Navigare principală">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.svg" alt="Logo Clean Pro - companie curățenie Cahul" width="140" height="42">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="Deschide meniul">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Acasă</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Servicii</a></li>
+          <li class="nav-item"><a class="nav-link" href="packages.html">Pachete</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Despre noi</a></li>
+          <li class="nav-item"><a class="nav-link" href="reviews.html">Recenzii</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html#offerForm" class="btn btn-primary-clean ms-lg-3 mt-3 mt-lg-0">Solicită ofertă</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="bg-primary text-white py-5">
+      <div class="container py-4">
+        <h1>Recenzii clienți</h1>
+        <p class="lead mb-0">Ce spun cei care ne-au ales</p>
+      </div>
+    </header>
+
+    <!-- Slider recenzii -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Testimoniale</h2>
+        <div class="reviews-slider py-4">
+          <div class="review-slide active">
+            <div class="review-card">
+              <img src="img/gallery/client1.jpg" alt="Foto clientă Ana Ciobanu" width="80" height="80" loading="lazy">
+              <div class="stars" aria-label="5 stele">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>„Apartamentul strălucește după fiecare vizită. Echipa e punctuală și foarte atentă la detalii.”</p>
+              <h3 class="h6 mb-0">Ana Ciobanu</h3>
+              <small class="text-muted">Curățenie rezidențială</small>
+            </div>
+          </div>
+          <div class="review-slide">
+            <div class="review-card">
+              <img src="img/gallery/client2.jpg" alt="Foto client Victor Roșca" width="80" height="80" loading="lazy">
+              <div class="stars" aria-label="5 stele">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>„Colaborăm de 2 ani pentru birou. Flexibilitate la program și preț corect — recomand cu încredere.”</p>
+              <h3 class="h6 mb-0">Victor Roșca</h3>
+              <small class="text-muted">Curățenie birouri</small>
+            </div>
+          </div>
+          <div class="review-slide">
+            <div class="review-card">
+              <img src="img/gallery/client3.jpg" alt="Foto clientă Natalia Botnari" width="80" height="80" loading="lazy">
+              <div class="stars" aria-label="5 stele">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+              </div>
+              <p>„După renovare era praf peste tot. Clean Pro a predat apartamentul gata de mutare în 6 ore.”</p>
+              <h3 class="h6 mb-0">Natalia Botnari</h3>
+              <small class="text-muted">Post-construcție</small>
+            </div>
+          </div>
+        </div>
+        <div class="slider-controls text-center">
+          <button type="button" id="reviewPrev" aria-label="Recenzie anterioară"><i class="bi bi-chevron-left"></i></button>
+          <button type="button" id="reviewNext" aria-label="Recenzie următoare"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid recenzii -->
+    <section class="section-padding">
+      <div class="container">
+        <h2 class="section-title text-center">Toate recenziile</h2>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm p-4">
+              <div class="d-flex align-items-center mb-3">
+                <img src="img/gallery/client4.jpg" alt="Dumitru Cazacu" width="50" height="50" class="rounded-circle me-3" loading="lazy">
+                <div>
+                  <h3 class="h6 mb-0">Dumitru Cazacu</h3>
+                  <small class="text-muted">Industrială</small>
+                </div>
+              </div>
+              <div class="stars small mb-2">
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </div>
+              <p class="card-text small">Depozitul nostru de 400 m² e impecabil după fiecare intervenție lunară.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm p-4">
+              <div class="d-flex align-items-center mb-3">
+                <img src="img/gallery/client5.jpg" alt="Irina Gheorghiu" width="50" height="50" class="rounded-circle me-3" loading="lazy">
+                <div>
+                  <h3 class="h6 mb-0">Irina Gheorghiu</h3>
+                  <small class="text-muted">Pachet Standard</small>
+                </div>
+              </div>
+              <div class="stars small mb-2">
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </div>
+              <p class="card-text small">Produsele nu miros puternic chimic — important cu un bebeluș în casă.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm p-4">
+              <div class="d-flex align-items-center mb-3">
+                <img src="img/gallery/client6.jpg" alt="Sergiu Mardari" width="50" height="50" class="rounded-circle me-3" loading="lazy">
+                <div>
+                  <h3 class="h6 mb-0">Sergiu Mardari</h3>
+                  <small class="text-muted">Premium</small>
+                </div>
+              </div>
+              <div class="stars small mb-2">
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star text-warning"></i>
+              </div>
+              <p class="card-text small">Serviciu premium merită fiecare leu. Geamurile și bucătăria ca noi.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video testimoniale -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Video testimoniale</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="video-wrapper video-wrapper--local">
+              <video controls preload="metadata" poster="video/poster-service.jpg"
+                title="Prezentare servicii de curățenie profesională">
+                <source src="video/cleaning-service.mp4" type="video/mp4">
+                Browserul tău nu suportă redarea video.
+              </video>
+            </div>
+            <p class="small text-muted text-center mt-2">Prezentare servicii de curățenie profesională</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="video-wrapper video-wrapper--local">
+              <video controls preload="metadata" poster="video/poster-result.jpg"
+                title="Curățenie în profunzime a locuinței">
+                <source src="video/cleaning-result.mp4" type="video/mp4">
+                Browserul tău nu suportă redarea video.
+              </video>
+            </div>
+            <p class="small text-muted text-center mt-2">Rezultat vizibil: curățenie în profunzime</p>
+          </div>
+        </div>
+        <p class="text-muted small text-center mt-3">
+          Clipuri demonstrative despre curățenie (Mixkit, licență gratuită). Pentru producție: înlocuiți cu testimoniale reale Clean Pro în <code>video/</code>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-clean">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <img src="img/logo.svg" alt="Clean Pro logo" width="120" height="36" class="mb-3">
+          <p>Companie de curățenie profesională din Cahul. Calitate, încredere și rezultate vizibile.</p>
+          <div class="social-links mt-3">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h5>Linkuri rapide</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="services.html">Servicii</a></li>
+            <li><a href="packages.html">Pachete</a></li>
+            <li><a href="about.html">Despre noi</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h5>Contact</h5>
+          <p><i class="bi bi-geo-alt me-2"></i>Str. Republicii 45, Cahul</p>
+          <p><i class="bi bi-telephone me-2"></i><a href="tel:+37369123456">+373 69 123 456</a></p>
+          <p><i class="bi bi-envelope me-2"></i><a href="mailto:contact@cleanpro.md">contact@cleanpro.md</a></p>
+        </div>
+        <div class="col-lg-3">
+          <h5>Program</h5>
+          <p>Luni – Vineri: 08:00 – 18:00</p>
+          <p>Sâmbătă: 09:00 – 14:00</p>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary">
+      <p class="text-center mb-0 small">&copy; 2026 Clean Pro. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Sus"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
