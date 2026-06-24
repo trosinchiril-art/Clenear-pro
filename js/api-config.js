@@ -7,6 +7,5 @@
  * 3. Completați URL-ul de mai jos și faceți git push
  */
 window.CLEANPRO_CONFIG = {
-  // Exemplu: "https://cleanpro.infinityfreeapp.com/php/submit_offer.php"
-  remoteApi: "",
+  remoteApi: "https://cleanpro2.free.nf/CleanPro/php/submit_offer.php",
 };
