@@ -1,7 +1,7 @@
 /**
  * validation.js - Validare + salvare formular
  * Local: PHP + MySQL (XAMPP)
- * Netlify: remote PHP API (InfinityFree) sau Netlify Function → MySQL
+ * Netlify: Netlify Forms (salvare în panoul Netlify)
  */
 
 (function () {
@@ -44,7 +44,7 @@
             message:
               "Serverul a returnat răspuns invalid (HTTP " +
               response.status +
-              "). Redeploy pe Netlify sau configurați remoteApi în js/api-config.js",
+              "). Redeploy pe Netlify (Forms → Enable form detection).",
           };
         }
         return { ok: response.ok, status: response.status, data: data };
@@ -52,30 +52,52 @@
     });
   }
 
+  function submitNetlifyForms(bodyString) {
+    var params = new URLSearchParams(bodyString);
+    params.set("form-name", "offer");
+    var urls = ["/contact.html", "/"];
+
+    function attempt(index) {
+      if (index >= urls.length) {
+        return Promise.resolve({
+          ok: false,
+          data: {
+            success: false,
+            message:
+              "Formularul Netlify nu este activ. În Netlify: Forms → Enable form detection → redeploy.",
+          },
+        });
+      }
+
+      return fetch(urls[index], {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: params.toString(),
+      })
+        .then(function (response) {
+          if (response.ok || response.status === 302) {
+            return {
+              ok: true,
+              data: { success: true, message: "Cererea a fost înregistrată." },
+            };
+          }
+          return attempt(index + 1);
+        })
+        .catch(function () {
+          return attempt(index + 1);
+        });
+    }
+
+    return attempt(0);
+  }
+
   function submitForm(bodyString) {
     if (isLocal()) {
       return postUrlencoded("php/submit_offer.php", bodyString);
     }
 
-    var config = window.CLEANPRO_CONFIG || {};
-
-    if (config.remoteApi) {
-      return postUrlencoded(config.remoteApi, bodyString);
-    }
-
     if (isNetlify()) {
-      return postUrlencoded("/.netlify/functions/submit-offer", bodyString).then(function (res) {
-        if (res.data && res.data.success) return res;
-        return {
-          ok: false,
-          data: {
-            success: false,
-            message:
-              (res.data && res.data.message) ||
-              "MySQL nu este configurat. Setați remoteApi în js/api-config.js (InfinityFree) sau DB_* în Netlify.",
-          },
-        };
-      });
+      return submitNetlifyForms(bodyString);
     }
 
     return Promise.resolve({
