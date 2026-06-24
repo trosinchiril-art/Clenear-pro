@@ -44,7 +44,7 @@
             message:
               "Serverul a returnat răspuns invalid (HTTP " +
               response.status +
-              "). Redeploy pe Netlify (Forms → Enable form detection).",
+              ").",
           };
         }
         return { ok: response.ok, status: response.status, data: data };

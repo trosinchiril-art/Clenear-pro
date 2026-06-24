@@ -1,68 +1,32 @@
-# Локальный запуск (XAMPP) — по-русски
+# Локальный запуск (XAMPP)
 
-## Почему не работает localhost?
+## Быстрый старт
 
-Чаще всего **Apache не запущен** в XAMPP.
+1. Дважды щёлкните `start-xampp.bat` (Apache + MySQL)
+2. phpMyAdmin → Import → `database/schema.sql`
+3. Откройте: http://localhost/CleanPro/contact.html
 
-Страница `http://localhost/CleanPro/contact.html` работает **только** когда:
-- ✅ XAMPP установлен в `C:\xampp`
-- ✅ **Apache** — зелёный (Running)
-- ✅ **MySQL** — зелёный (Running)
-- ✅ Открываете через **localhost**, а не двойным щелчком по файлу
+Проверка PHP: http://localhost/CleanPro/php/test_connection.php
 
----
+## База данных
 
-## Быстрый запуск (3 шага)
+| Параметр | Значение |
+|----------|----------|
+| Пользователь | `root` |
+| Пароль | *(пустой)* |
+| База | `cleanpro` |
+| Таблица | `offer_requests` |
 
-### 1. Дважды щёлкните `start-xampp.bat` в папке CleanPro
+## Netlify (онлайн)
 
-Скрипт сам:
-- создаст ссылку в `htdocs`
-- запустит Apache и MySQL
-- откроет браузер
-
-### 2. Или вручную через XAMPP Control Panel
-
-1. Откройте **XAMPP Control Panel**
-2. Нажмите **Start** у **Apache**
-3. Нажмите **Start** у **MySQL**
-
-### 3. Откройте в браузере
-
-```
-http://localhost/CleanPro/contact.html
-```
-
-**Проверка:** http://localhost/CleanPro/php/test_connection.php  
-Должно быть: «Totul funcționează» / всё работает.
-
----
-
-## База данных (phpMyAdmin)
-
-1. http://localhost/phpmyadmin
-2. Импорт → `database/schema.sql`
-3. После отправки формы → база `cleanpro` → таблица `offer_requests`
-
----
+- Сайт: https://rad-meringue-304b42.netlify.app/contact.html
+- Заявки: Netlify → **Forms** → **offer**
 
 ## Частые ошибки
 
 | Проблема | Решение |
 |----------|---------|
 | Страница не открывается | Запустите Apache в XAMPP |
-| «Не удалось подключиться к серверу» | Apache/MySQL не запущены |
-| Открыли файл с Рабочего стола (file://) | Используйте только `http://localhost/...` |
-| Ошибка базы данных | Импортируйте `schema.sql` в phpMyAdmin |
-| Телефон не принимается | Формат: `+373` + 8 цифр (ровно 12 символов) |
-
----
-
-## Netlify vs локально
-
-| Где | URL | База данных |
-|-----|-----|-------------|
-| **Локально** | http://localhost/CleanPro/contact.html | phpMyAdmin на компьютере |
-| **Онлайн** | https://sparkly-begonia-f8708c.netlify.app/contact | Netlify Forms или InfinityFree |
-
-Для отчёта по практике удобно показать **локальную** версию с phpMyAdmin.
+| Ошибка базы данных | Импортируйте `schema.sql` |
+| Открыли файл с диска (file://) | Используйте `http://localhost/...` |
+| Телефон не принимается | `+373` + 8 цифр (12 символов) |

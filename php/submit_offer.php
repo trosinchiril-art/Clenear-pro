@@ -1,25 +1,7 @@
 <?php
 /**
- * Salvează cererea de ofertă în MySQL (phpMyAdmin)
- * Suportă apeluri de pe Netlify (CORS)
+ * Salvează cererea de ofertă în MySQL (XAMPP local)
  */
-
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-$localOrigins = ['http://localhost', 'http://127.0.0.1'];
-$isAllowed =
-    in_array($origin, $localOrigins, true) ||
-    preg_match('#^https://[\w-]+\.netlify\.app$#', $origin);
-
-if ($isAllowed) {
-    header('Access-Control-Allow-Origin: ' . $origin);
-    header('Access-Control-Allow-Methods: POST, OPTIONS');
-    header('Access-Control-Allow-Headers: Content-Type');
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(204);
-    exit;
-}
 
 header('Content-Type: application/json; charset=utf-8');
 
