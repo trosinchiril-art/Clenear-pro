@@ -55,29 +55,40 @@
   function submitNetlifyForms(bodyString) {
     var params = new URLSearchParams(bodyString);
     params.set("form-name", "offer");
-    var action = window.location.pathname || "/";
-    return fetch(action, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-      body: params.toString(),
-    }).then(function (response) {
-      if (response.ok) {
-        return {
-          ok: true,
+    var urls = ["/contact.html", "/"];
+
+    function attempt(index) {
+      if (index >= urls.length) {
+        return Promise.resolve({
+          ok: false,
           data: {
-            success: true,
-            message: "Cererea a fost înregistrată.",
+            success: false,
+            message:
+              "Formularul Netlify nu este activ. În panoul Netlify: Forms → verificați formularul „offer” după deploy.",
           },
-        };
+        });
       }
-      return {
-        ok: false,
-        data: {
-          success: false,
-          message: "Eroare la trimitere. Faceți redeploy site-ul pe Netlify.",
-        },
-      };
-    });
+
+      return fetch(urls[index], {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: params.toString(),
+      })
+        .then(function (response) {
+          if (response.ok || response.status === 302) {
+            return {
+              ok: true,
+              data: { success: true, message: "Cererea a fost înregistrată." },
+            };
+          }
+          return attempt(index + 1);
+        })
+        .catch(function () {
+          return attempt(index + 1);
+        });
+    }
+
+    return attempt(0);
   }
 
   function submitForm(bodyString) {
