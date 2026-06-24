@@ -55,7 +55,8 @@
   function submitNetlifyForms(bodyString) {
     var params = new URLSearchParams(bodyString);
     params.set("form-name", "offer");
-    return fetch("/", {
+    var action = window.location.pathname || "/";
+    return fetch(action, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
       body: params.toString(),
@@ -65,13 +66,16 @@
           ok: true,
           data: {
             success: true,
-            message: "Cererea a fost înregistrată (Netlify Forms).",
+            message: "Cererea a fost înregistrată.",
           },
         };
       }
       return {
         ok: false,
-        data: { success: false, message: "Eroare Netlify Forms. Faceți redeploy site-ul." },
+        data: {
+          success: false,
+          message: "Eroare la trimitere. Faceți redeploy site-ul pe Netlify.",
+        },
       };
     });
   }
@@ -82,30 +86,22 @@
     }
 
     var config = window.CLEANPRO_CONFIG || {};
-    var chain = Promise.resolve();
 
     if (config.remoteApi) {
-      chain = chain.then(function () {
-        return postUrlencoded(config.remoteApi, bodyString).then(function (res) {
-          if (res.data && res.data.success) return res;
-          return Promise.reject(res);
-        });
-      });
-    } else if (isNetlify()) {
-      chain = chain.then(function () {
-        return postUrlencoded("/.netlify/functions/submit-offer", bodyString).then(function (res) {
-          if (res.data && res.data.success) return res;
-          if (res.status === 404) return Promise.reject({ fallback: true });
-          return Promise.reject(res);
-        });
+      return postUrlencoded(config.remoteApi, bodyString).then(function (res) {
+        if (res.data && res.data.success) return res;
+        if (isNetlify()) return submitNetlifyForms(bodyString);
+        return res;
       });
     }
 
-    return chain.catch(function (err) {
-      if (isNetlify()) {
-        return submitNetlifyForms(bodyString);
-      }
-      return err && err.data ? err : Promise.reject(err);
+    if (isNetlify()) {
+      return submitNetlifyForms(bodyString);
+    }
+
+    return Promise.resolve({
+      ok: false,
+      data: { success: false, message: "Server indisponibil." },
     });
   }
 
@@ -115,7 +111,7 @@
       validate: function (v) {
         if (!v.trim()) return "Numele este obligatoriu.";
         if (v.trim().length < 2) return "Numele trebuie să aibă minim 2 caractere.";
-        if (!/^[a-zA-ZăâîșțĂÂÎȘȚ\s\-']+$/.test(v.trim()))
+        if (!/^[a-zA-ZăâîșțĂÂÎȘȚа-яА-ЯёЁ\s\-']+$/.test(v.trim()))
           return "Numele conține caractere nevalide.";
         return "";
       },
@@ -263,8 +259,17 @@
       })
       .catch(function () {
         if (errorAlert && errorText) {
-          errorText.textContent =
-            "Nu s-a putut trimite cererea. Verificați conexiunea sau faceți redeploy pe Netlify.";
+          var msg = "Nu s-a putut trimite cererea. ";
+          if (window.location.protocol === "file:") {
+            msg +=
+              "Nu deschideți fișierul direct! Rulați start-xampp.bat și accesați http://localhost/CleanPro/contact.html";
+          } else if (isLocal()) {
+            msg +=
+              "Porniți XAMPP (Apache + MySQL). Dublu-click pe start-xampp.bat din folderul proiectului.";
+          } else {
+            msg += "Verificați conexiunea la server.";
+          }
+          errorText.textContent = msg;
           errorAlert.classList.remove("d-none");
           errorAlert.scrollIntoView({ behavior: "smooth", block: "center" });
         }

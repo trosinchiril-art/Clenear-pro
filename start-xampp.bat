@@ -1,29 +1,40 @@
 @echo off
 chcp 65001 >nul
+title Clean Pro - XAMPP
 echo ========================================
-echo   Clean Pro - pornire XAMPP
+echo   Clean Pro - запуск локального сервера
 echo ========================================
 echo.
 
-if not exist "C:\xampp\xampp_start.exe" (
-    echo XAMPP nu este instalat in C:\xampp
+if not exist "C:\xampp\xampp-control.exe" (
+    echo [ОШИБКА] XAMPP не найден в C:\xampp
+    echo Скачайте: https://www.apachefriends.org/
     pause
     exit /b 1
 )
 
 if not exist "C:\xampp\htdocs\CleanPro" (
-    echo Creare legatura proiect in htdocs...
+    echo Создание ссылки на проект...
     mklink /J "C:\xampp\htdocs\CleanPro" "%~dp0"
 )
 
-echo Pornire Apache si MySQL...
-start "" "C:\xampp\xampp-control.exe"
+echo Запуск Apache...
+call "C:\xampp\apache_start.bat" >nul 2>&1
+timeout /t 3 /nobreak >nul
+
+echo Запуск MySQL...
+call "C:\xampp\mysql_start.bat" >nul 2>&1
+timeout /t 4 /nobreak >nul
 
 echo.
-echo Deschideti in browser:
+echo Откройте в браузере:
 echo   http://localhost/CleanPro/contact.html
 echo.
-echo Verificare PHP + MySQL:
+echo Проверка сервера:
 echo   http://localhost/CleanPro/php/test_connection.php
 echo.
+echo НЕ открывайте файл двойным щелчком (file://) — только через localhost!
+echo.
+
+start "" "http://localhost/CleanPro/contact.html"
 pause

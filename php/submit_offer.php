@@ -51,7 +51,7 @@ $area = filter_var($input['area'], FILTER_VALIDATE_FLOAT);
 if ($input['name'] === '' || mb_strlen($input['name']) < 2) {
     respondError('Numele este obligatoriu.');
 }
-if (!preg_match('/^[a-zA-ZăâîșțĂÂÎȘȚ\s\-\']+$/u', $input['name'])) {
+if (!preg_match('/^[a-zA-ZăâîșțĂÂÎȘȚа-яА-ЯёЁ\s\-\']+$/u', $input['name'])) {
     respondError('Numele conține caractere nevalide.');
 }
 if (!preg_match('/^\+373[0-9]{8}$/', $phoneClean)) {
