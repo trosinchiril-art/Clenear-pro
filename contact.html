@@ -52,7 +52,14 @@
             <div id="formSuccess" class="alert alert-success d-none" role="alert">
               <i class="bi bi-check-circle me-2"></i>Mulțumim! Cererea a fost trimisă. Vă contactăm în curând.
             </div>
-            <form id="offerForm" novalidate>
+            <div id="formError" class="alert alert-danger d-none" role="alert">
+              <i class="bi bi-exclamation-circle me-2"></i><span id="formErrorText">Eroare la trimitere.</span>
+            </div>
+            <form id="offerForm" name="offer" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+              <input type="hidden" name="form-name" value="offer">
+              <p class="d-none" aria-hidden="true">
+                <label>Nu completați: <input name="bot-field"></label>
+              </p>
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="clientName" class="form-label">Nume complet *</label>
@@ -183,6 +190,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/api-config.js" defer></script>
   <script src="js/validation.js" defer></script>
 </body>
 </html>
