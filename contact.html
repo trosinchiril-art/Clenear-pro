@@ -35,18 +35,6 @@
     </div>
   </nav>
 
-  <!-- Formular ascuns pentru detectare Netlify Forms la build (obligatoriu pentru AJAX) -->
-  <form name="offer" netlify netlify-honeypot="bot-field" hidden>
-    <input type="hidden" name="form-name" value="offer">
-    <input name="name">
-    <input name="phone">
-    <input name="email">
-    <input name="serviceType">
-    <input name="area">
-    <input name="frequency">
-    <textarea name="message"></textarea>
-  </form>
-
   <main>
     <header class="bg-primary text-white py-5">
       <div class="container py-4">
@@ -67,11 +55,7 @@
             <div id="formError" class="alert alert-danger d-none" role="alert">
               <i class="bi bi-exclamation-circle me-2"></i><span id="formErrorText">Eroare la trimitere.</span>
             </div>
-            <form id="offerForm" name="offer" method="POST" action="/contact.html" novalidate>
-              <input type="hidden" name="form-name" value="offer">
-              <p class="d-none" aria-hidden="true">
-                <label>Nu completați: <input name="bot-field"></label>
-              </p>
+            <form id="offerForm" name="offer" method="POST" novalidate>
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="clientName" class="form-label">Nume complet *</label>

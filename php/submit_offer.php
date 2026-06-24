@@ -4,14 +4,13 @@
  * Suportă apeluri de pe Netlify (CORS)
  */
 
-$allowedOrigins = [
-    'https://sparkly-begonia-f8708c.netlify.app',
-    'http://localhost',
-    'http://127.0.0.1',
-];
-
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-if (in_array($origin, $allowedOrigins, true)) {
+$localOrigins = ['http://localhost', 'http://127.0.0.1'];
+$isAllowed =
+    in_array($origin, $localOrigins, true) ||
+    preg_match('#^https://[\w-]+\.netlify\.app$#', $origin);
+
+if ($isAllowed) {
     header('Access-Control-Allow-Origin: ' . $origin);
     header('Access-Control-Allow-Methods: POST, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type');
